@@ -1,0 +1,41 @@
+# Create a git repo
+git init
+
+# UNDO a git add
+git reset
+
+# Check the dir
+git status
+
+# inspect the content of the remote repository
+git remote show origin 
+
+# Unstage a file, but keep modifications
+git restore --staged file
+
+# Delete any modification and restore previous commit
+# It is dangerous, the modification cannot be recovered!
+git restore file
+
+# A Branch is a parallel copy a the project at a certain point
+# It is possible to create a branch as follow
+git branch BranchName
+
+# To move in a Branch
+git checkout BranchName
+
+# How to commit a Branch
+git commit -a -m "Message"
+
+# merge a Branch with the master
+git checkout master
+git merge Branchname
+
+# Delete a branch
+git branch -d BranchName
+
+# Fetch moves the remote branch to its current state, sync with the remote repository
+# It is like git pull, but it soes not merge local files with the remote ones
+git fetch BranchName
+
+
