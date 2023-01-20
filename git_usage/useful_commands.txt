@@ -39,3 +39,9 @@ git branch -d BranchName
 git fetch BranchName
 
 
+# FIRST SYNC when you have files on a local repo and an EMPYT remote:
+git remote add origin link
+git branch -M main
+git add .
+git commit -m "Message"
+git push -u origin main
