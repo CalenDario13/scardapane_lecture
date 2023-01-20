@@ -1,4 +1,4 @@
 data/*
-.ipynb_checkpoints
-intro/lightning_logs/*
-intro/.ipynb_checkpoints
+**/.ipynb_checkpoints/*
+**/.vscod/*
+**/lightning_logs/*
