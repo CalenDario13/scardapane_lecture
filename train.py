@@ -115,7 +115,7 @@ class AudioNet(pl.LightningModule):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.hparams.optim.lr)
         return optimizer
 
-@hydra.main(config_path=MAINPATH + '/configs', config_name="default.yal", version_base="1.1")
+@hydra.main(config_path=MAINPATH + '/configs', config_name="default.yml", version_base="1.1")
 def train(cfg: DictConfig):
     # Configuration
     logger.info(OmegaConf.to_yaml(cfg))
