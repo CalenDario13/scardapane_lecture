@@ -129,7 +129,7 @@ def train(cfg: DictConfig):
     val_loader = torch.utils.data.DataLoader(val_data, batch_size=cfg.data.batch_size)
     # test_loader = torch.utils.data.DataLoader(test_data, batch_size=cfg.data.batch_size)
     
-    pl.seed_everything(0)
+    pl.seed_everything(cfg.seed)
     
     audionet = AudioNet(cfg.model)
     trainer = pl.Trainer(**cfg.trainer)
