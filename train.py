@@ -17,19 +17,19 @@ from omegaconf import DictConfig
 import logging
 logger = logging.getLogger(__name__)
 from omegaconf import OmegaConf
-logger.info(OmegaConf.to_yaml(cfg))
 
-MAINPATH =  Path('G:\My Drive\DS\doker_kuberneast\scardapane_lectures')
+
+MAINPATH =  'G:/My Drive/DS/doker_kuberneast/scardapane_lectures'
 
 class ESC50Dataset(torch.utils.data.Dataset):
     # Simple class to load the desired folders inside ESC-50
     
-    def __init__(self, path: Path, 
+    def __init__(self, path: str, 
                  sample_rate: int = 8000,
                  folds: list  = [1]):
         # Load CSV & initialize all torchaudio.transforms:
         # Resample --> MelSpectrogram --> AmplitudeToDB
-        self.path = path
+        self.path = Path(path)
         self.csv = pd.read_csv(path / Path('meta/esc50.csv'))
         self.csv = self.csv[self.csv['fold'].isin(folds)]
         self.resample = torchaudio.transforms.Resample(
@@ -115,9 +115,10 @@ class AudioNet(pl.LightningModule):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.hparams.optim.lr)
         return optimizer
 
-@hydra.main(config_path= MAINPATH / Path("configs"), config_name="default.yaml", version_base="1.1")
+@hydra.main(config_path=MAINPATH + '/configs', config_name="default.yal", version_base="1.1")
 def train(cfg: DictConfig):
-    print(get_original_cwd())
+    # Configuration
+    logger.info(OmegaConf.to_yaml(cfg))
     path = Path(get_original_cwd() / Path(cfg.data.path) )
     # We use folds 1,2,3 for training, 4 for validation, 5 for testing.
     train_data = ESC50Dataset(path=path, folds=cfg.data.train_folds)
@@ -134,8 +135,7 @@ def train(cfg: DictConfig):
     trainer = pl.Trainer(**cfg.trainer)
     trainer.fit(audionet, train_loader, val_loader)
 
-if __name__ == "main":
-    
+if __name__ == "__main__":
     train()
 
 
