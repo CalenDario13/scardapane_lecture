@@ -60,7 +60,8 @@ class AudioNet(pl.LightningModule):
     
     def __init__(self, hparams):
         super().__init__()
-        self.hparams = hparams
+        for key in hparams.keys():
+            self.hparams[key]=hparams[key]
         self.conv1 = nn.Conv2d(1, hparams.base_filters, 11, padding=5)
         self.bn1 = nn.BatchNorm2d(hparams.base_filters)
         self.conv2 = nn.Conv2d(hparams.base_filters, hparams.base_filters, 3, padding=1)
@@ -115,7 +116,7 @@ class AudioNet(pl.LightningModule):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.hparams.optim.lr)
         return optimizer
 
-@hydra.main(config_path=MAINPATH + '/configs', config_name="default.yml", version_base="1.1")
+@hydra.main(config_path=MAINPATH + '/configs', config_name="default.yaml", version_base="1.1")
 def train(cfg: DictConfig):
     # Configuration
     logger.info(OmegaConf.to_yaml(cfg))

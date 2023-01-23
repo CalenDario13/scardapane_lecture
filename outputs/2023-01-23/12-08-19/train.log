@@ -1,0 +1,22 @@
+[2023-01-23 12:08:19,443][__main__][INFO] - seed: 0
+data:
+  path: data\ESC-50-master\ESC-50-master
+  sample_rate: 8000
+  train_folds:
+  - 1
+  - 2
+  - 3
+  val_folds:
+  - 4
+  test_folds:
+  - 5
+  batch_size: 2
+model:
+  base_filters: 32
+  num_classes: 50
+  optim:
+    lr: 3.0e-05
+trainer:
+  max_epochs: 1
+  accelerator: gpu
+

@@ -1,7 +1,7 @@
 seed: 0
 
 data:
-    path: "data\ESC-50-master\ESC-50-master"
+    path: 'data\ESC-50-master\ESC-50-master'
     sample_rate: 8000
     train_folds: [1,2,3]
     val_folds: [4]
@@ -17,7 +17,7 @@ model:
     
 trainer:
     max_epochs: 1
-    accelerator: "gpu"
+    accelerator: 'gpu'
 
 defaults:
   - hydra/job_logging: colorlog
