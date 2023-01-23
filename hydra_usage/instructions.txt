@@ -1,0 +1,14 @@
+#Run a standard training loop:
+python train.py
+
+#Dynamically change the batch size (modify according to your YAML file):
+python train.py data.batch_size=4
+
+#Add new flags for the trainer on-the-fly:
+python train.py +trainer.fast_dev_run=True
+
+#Remove a flag from the configuration:
+python train.py ~trainer.gpus
+
+#Change the output directory:
+python train.py hydra.run.dir="custom_dir"

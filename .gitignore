@@ -2,3 +2,5 @@ data/*
 **/.ipynb_checkpoints/*
 **/.vscod/*
 **/lightning_logs/*
+outouts/*
+
