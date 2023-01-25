@@ -1,0 +1,25 @@
+# Initialize dvc in a folder
+dvc init
+
+# Select the file to be tarcked
+# The file is automaticaly put in .gitignore file list
+dvc add file.csv
+dvc push
+
+# Track the dvc metadata in git
+git add data.dvc
+
+# Add a remote
+# It is possible to have multiple remotes
+dvc remote add <name> <path>
+
+# Take somenthing from the remote and move to the cache
+dvc fetch
+
+# Take from the cache and put in the local folder
+dvc checkout
+
+# Do fetch and checkout in a single operation
+dvc pull
+
+
